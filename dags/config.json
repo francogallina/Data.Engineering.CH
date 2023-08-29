@@ -1,8 +1,0 @@
-{
-  "api_key_twelvedata": "4b9cb6af29364ea38fef0fa13370387c",
-  "drivername_db":"redshift+redshift_connector",
-  "host_db":"data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com",
-  "database_db":"data-engineer-database",
-  "username_db":"franco_049_coderhouse",
-  "password_db":"5fLiGUX06F"
-  }
