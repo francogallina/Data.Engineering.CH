@@ -39,18 +39,21 @@ password_db = config.get('password_db')
 task_1 = PythonOperator(
     task_id='extraer_data',
     python_callable=funciones.get_stock_data,
-    # op_args=[api_key_twelvedata],
     dag=dag,
 )
-
 
 # 2. Envio de data 
 task_2= PythonOperator(
     task_id="conexion_BD",
     python_callable=funciones.conexion_redshift,
-    # op_args=[host_db, database_db,username_db,password_db],
     dag=dag
 )
 
+# 3. Envio de data 
+task_3= PythonOperator(
+    task_id="envío_email",
+    python_callable=funciones.send_email,
+    dag=dag
+)
 
-task_1 >> task_2
+task_1 >> task_2 >> task_3

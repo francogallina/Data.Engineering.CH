@@ -7,6 +7,8 @@ from sqlalchemy import create_engine
 import json
 from datetime import datetime
 import psycopg2
+import smtplib
+from email.mime.text import MIMEText
 
 
 """----------------------------------EXTRACCIÓN DATOS DE LA API----------------------------------"""
@@ -68,5 +70,24 @@ def conexion_redshift(**context):
   stock_prices.to_sql('stock_prices', engine, schema="franco_049_coderhouse", if_exists='replace', index=False)
 
 
+"""----------------------------------ENVÍO DE EMAIL----------------------------------"""
+def send_email(**context):
+  day = datetime.now().strftime("%m/%d/%Y %I:%M %p"),
+  subject = "Carga de datos exitosa"
+  sender = context["var"]["value"].get("EMAIL_SENDER")
+  recipient = context["var"]["value"].get("EMAIL_RECIPIENT")
+  password = context["var"]["value"].get("EMAIL_PASSWORD")
+  body= f"La carga de datos del dia {day} en la base de datos fue realizad con éxito"
+
+  msg = MIMEText(body)
+  msg['Subject'] = subject
+  msg['From'] = sender
+  msg['To'] = recipient
+
+  with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
+    smtp_server.login(sender, password)
+    smtp_server.sendmail(sender, recipient, msg.as_string())
+  print("Mensaje enviado")
 
 
+"Quede en minuto 45 del video"
