@@ -89,5 +89,3 @@ def send_email(**context):
     smtp_server.sendmail(sender, recipient, msg.as_string())
   print("Mensaje enviado")
 
-
-"Quede en minuto 45 del video"
