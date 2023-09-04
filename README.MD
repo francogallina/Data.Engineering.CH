@@ -15,7 +15,7 @@ El código es ejecutado diariamente mediante Airflow y almacenados en una base d
 3. Ingrese `airflow` como usuario y contraseña.
 4. Dirigase a la opción `Admin` y luego en `Variables`.
 5. Dentro de esa sección ingrese la Apikey proporcionada por https://twelvedata.com/ y las credenciales de Redshift.
-![Variables Screenshot](Config_variables.png "Variables Screenshot")
+![Variables Screenshot](Config_variables.PNG)
 6. Ejecute el DAG `Precio_acciones_Dow_Jones`
 7. Para terminar con el proceso ingrese `docker-compose stop` en la terminal.
 
